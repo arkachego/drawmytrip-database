@@ -1,0 +1,54 @@
+networks:
+  network:
+    driver: bridge
+
+volumes:
+  postgres:
+    name: drawymytrip-postgres
+  # dynamodb:
+  #   name: drawmytrip-dynamodb
+
+services:
+  postgres:
+    image: postgres:17.4
+    container_name: postgres
+    platform: linux/amd64
+    ports:
+      - '5432:5432'
+    networks:
+      - network
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=drawmytrip
+      - POSTGRES_USER=drawmytrip
+      - POSTGRES_PASSWORD=drawmytrip
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready", "-U", "drawmytrip", "-d", "drawmytrip"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+  # dynamodb:
+  #   image: "amazon/dynamodb-local:latest"
+  #   container_name: dynamodb
+  #   command: ["-jar", "DynamoDBLocal.jar", "-sharedDb"]
+  #   ports:
+  #     - "8000:8000"
+  #   networks:
+  #     - network
+  #   volumes:
+  #     - "dynamodb:/home/dynamodb/data"
+  #   environment:
+  #     - AWS_ACCESS_KEY_ID=local
+  #     - AWS_SECRET_ACCESS_KEY=local
+  #     - AWS_REGION=ap-south-1
+  #   healthcheck:
+  #     test: ["CMD", "curl", "-s", "-o", "/dev/null", "-w", "%{http_code}", 
+  #       "-X", "POST", 
+  #       "-H", "Content-Type: application/x-amz-json-1.0", 
+  #       "-H", "X-Amz-Target: DynamoDB_20120810.ListTables",
+  #       "--data", "{}", 
+  #       "http://localhost:8000"]
+  #     interval: 10s
+  #     timeout: 5s
+  #     retries: 5
