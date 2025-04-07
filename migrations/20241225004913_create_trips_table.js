@@ -9,7 +9,7 @@ const up = async (knex) => {
       table.timestamps(true, true);
       table.uuid("id", { primaryKey: true, useBinaryUuid: true }).defaultTo(knex.raw("uuid_generate_v4()"));
       table.string("title", 20).notNullable();
-      table.string("description", 500).nullable().defaultTo(null);
+      table.string("description", 300).nullable().defaultTo(null);
       table.integer("status").unsigned().notNullable().defaultTo(TRIP_STATUS_TYPE.CREATED).index();
       table.integer("duration").unsigned().nullable().defaultTo(null);
       table.decimal("distance").unsigned().nullable().defaultTo(null);

@@ -9,9 +9,12 @@ const up = async (knex) => {
       table.uuid("id", { primaryKey: true, useBinaryUuid: true }).defaultTo(knex.raw("uuid_generate_v4()"));
       table.uuid("user_id").notNullable().references("id").inTable(TABLE_TYPE.USER);
       table.string("title", 20).notNullable();
-      table.string("description", 500).nullable().defaultTo(null);
-      table.string("category", 50).notNullable();
-      table.integer("tenancy").unsigned().notNullable();
+      table.string("description", 300).nullable().defaultTo(null);
+      table.string("image", 250).nullable().defaultTo(null);
+      table.string("category", 10).notNullable();
+      table.string("fuel", 20).notNullable();
+      table.integer("mileage").unsigned().notNullable();
+      table.integer("occupancy").unsigned().notNullable();
       table.string("registration", 20).nullable().defaultTo(null).index();
     });
   }

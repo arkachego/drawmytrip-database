@@ -12,7 +12,7 @@ const up = async (knex) => {
       table.uuid("start_id").notNullable().references("id").inTable(TABLE_TYPE.WAYPOINT);
       table.uuid("finish_id").notNullable().references("id").inTable(TABLE_TYPE.WAYPOINT);
       table.string("title", 20).notNullable();
-      table.string("description", 500).nullable().defaultTo(null);
+      table.string("description", 300).nullable().defaultTo(null);
       table.integer("order").unsigned().notNullable().index();
       table.decimal("distance").unsigned().notNullable();
       table.integer("duration").unsigned().nullable().defaultTo(null);

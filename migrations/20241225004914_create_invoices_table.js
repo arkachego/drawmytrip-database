@@ -12,7 +12,7 @@ const up = async (knex) => {
       table.uuid("subscription_id").nullable().references("id").inTable(TABLE_TYPE.SUBSCRIPTION).defaultTo(null);
       table.uuid("trip_id").nullable().references("id").inTable(TABLE_TYPE.TRIP).defaultTo(null);
       table.string("title", 20).notNullable();
-      table.string("description", 500).nullable().defaultTo(null);
+      table.string("description", 300).nullable().defaultTo(null);
       table.decimal("pretotal").unsigned().notNullable();
       table.decimal("discount").unsigned().notNullable();
       table.decimal("subtotal").unsigned().notNullable();

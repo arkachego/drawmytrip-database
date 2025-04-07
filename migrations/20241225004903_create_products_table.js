@@ -8,7 +8,7 @@ const up = async (knex) => {
       table.timestamps(true, true);
       table.uuid("id", { primaryKey: true, useBinaryUuid: true }).defaultTo(knex.raw("uuid_generate_v4()"));
       table.string("title", 100).notNullable();
-      table.string("description", 500).nullable().defaultTo(null);
+      table.string("description", 300).nullable().defaultTo(null);
       table.string("unit", 20).notNullable();
       table.boolean("recurring").notNullable().defaultTo(false);
     });

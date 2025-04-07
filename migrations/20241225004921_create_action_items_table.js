@@ -11,7 +11,7 @@ const up = async (knex) => {
       table.uuid("participant_id").notNullable().references("id").inTable(TABLE_TYPE.PARTICIPANT);
       table.uuid("waypoint_id").notNullable().references("id").inTable(TABLE_TYPE.WAYPOINT);
       table.string("title", 20).notNullable();
-      table.string("description", 500).nullable().defaultTo(null);
+      table.string("description", 300).nullable().defaultTo(null);
       table.integer("category").unsigned().notNullable().defaultTo(ACTION_ITEM_TYPE.INTERIM).index();
     });
   }

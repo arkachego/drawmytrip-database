@@ -9,7 +9,7 @@ const up = async (knex) => {
       table.uuid("id", { primaryKey: true, useBinaryUuid: true }).defaultTo(knex.raw("uuid_generate_v4()"));
       table.uuid("parent_id").notNullable();
       table.string("title", 20).notNullable();
-      table.string("description", 500).nullable().defaultTo(null);
+      table.string("description", 300).nullable().defaultTo(null);
       table.integer("category").unsigned().notNullable().index();
       table.string("mimetype", 50).notNullable();
       table.bigInteger('size').unsigned().notNullable();

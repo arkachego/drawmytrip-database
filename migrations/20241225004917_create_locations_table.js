@@ -10,7 +10,7 @@ const up = async (knex) => {
       table.uuid("country_id").notNullable().references("id").inTable(TABLE_TYPE.COUNTRY);
       table.uuid("trip_id").nullable().references("id").inTable(TABLE_TYPE.TRIP);
       table.string("title", 20).notNullable();
-      table.string("description", 500).nullable().defaultTo(null);
+      table.string("description", 300).nullable().defaultTo(null);
       table.string("email", 100).nullable().defaultTo(null);
       table.string("code", 10).nullable().defaultTo(null);
       table.string("phone", 20).nullable().defaultTo(null);

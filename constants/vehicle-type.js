@@ -1,5 +1,6 @@
 module.exports = {
-  BIKE: "BIKE",
-  CAR: "CAR",
-  BUS: "BUS",
+  BIKE: "Bike",
+  CAR: "Car",
+  VAN: "Van",
+  BUS: "Bus"
 };
